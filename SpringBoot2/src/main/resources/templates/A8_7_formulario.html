@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Insert title here</title>
+</head>
+<body>
+
+	<h2>Formulario</h2>
+	
+	<!-- action="#" : PQ DESDE AQUÍ NO SE VAN A CAPTURAR LOS DATOS. SE VAN A CAPTURAR DESDE EL TH:ACTION DE THYMELIF -->
+	<!-- th:action="@{/ejemplopost/} : PONEMOS LA DIRECCION DE LA CLASE A3_7_PostController -->
+	<!-- /addpersona : PATH DEL MÉTODO QUE RECOPILA LOS DATOS DEL FORMULARIO -->
+	<!-- th:object="${A0_4_Persona} : PORQUE VAMOS A TRABAJAR CON OBJETOS DE TIPO PERSONA  -->
+	<!-- method="post" : SEGÚN EL TIPO DE MÉTODO QUE ES resultados() CON LA RUTA "/addpersona"  -->
+	<form action="#" th:action="@{/ejemplopost/addpersona}" th:object="${persona}" method="post">
+		
+		<!-- th:field : ETIQUETA THYMELIF PARA CAPTURAR LO QUE ESCRIBIÓ EL USUARIO Y USAMOS * PARA ENVIARLO A OTRO LADO -->
+		<p><input type="text" placeholder="Nombre" th:field="*{nombre}"/></p>
+		<p><input type="number" placeholder="Teléfono" th:field="*{telefono}"/></p>
+		<p><input type="submit" value="enviar"/></p>
+	
+
+	</form>
+	
+</body>
+</html>
