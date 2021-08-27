@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title th:text="${titulo}"></title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+</head>
+<body>
+
+	<div class="container mt-5">
+		<h3 class="text-center" th:text="${encabezado}"></h3>
+		<table class="table table-bordered table-striped">
+			<thead>
+				<tr>
+					<th>Nombre</th>
+					<th>Apellidos</th>
+					<th>Edad</th>
+					<th>Curso</th>
+					<th>Fecha ingreso</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each= "estudiante : ${estudiantes}">
+					<td th:text= "${estudiante.nombre}" ></td>
+					<td th:text= "${estudiante.apellidos}" ></td>
+					<td th:text= "${estudiante.edad}" ></td>
+					<td th:text= "${estudiante.curso}" ></td>
+					<td th:text= "${#dates.format(estudiante.fechaIngreso,'dd-MM-yyyy')}" ></td>
+				</tr>
+			</tbody>
+		
+		</table>
+		
+		<a th:href="@{/}"><button class="btn btn-default mt-5">&laquo;Volver</button></a>
+		
+	</div>
+
+</body>
+</html>

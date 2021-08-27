@@ -6,36 +6,48 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 </head>
 <body>
-
-	<h3>FORM</h3>
 	<div class="container">
-		<div class="row justify-content-center"></div>
-		<div class="cold-md-6">
+		<div class="row justify-content-center">
+		<div class="col-md-6">
 			<div class="card mt-5">
+				
+				<div class="alert alert-success" th:if="${success != null}"  th:text="${success}"> </div>
+				
 				<div class="card-header text-center">Formulario de estudiantes</div>
+				
 				<div class="card-body">
-					<form th:href="@{/}" th:object="${estudiantes}" method="POST">
+					<form th:href="@{/}" th:object="${estudiante}" method="POST">
 						<div class="row form-group">
 							<label class="col-md-3">Nombre</label>
-							<input type="text" th:field="*{nombre}" class="form-control col-md-8">
+							<input type="text" th:field="*{nombre}" class="form-control col-md-8" th:errorclass="'form-control alert-danger'">
+							<small class="form-text text-danger offset-3" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></small>
 						</div>
 						<div class="row form-group">
 							<label class="col-md-3">Apellidos</label>
-							<input type="text" th:field="*{apellidos}" class="form-control col-md-8">
+							<input type="text" th:field="*{apellidos}" class="form-control col-md-8" th:errorclass="'form-control alert-danger'">
+							<small class="form-text text-danger offset-3" th:if="${#fields.hasErrors('apellidos')}" th:errors="*{apellidos}"></small>
 						</div>
 						<div class="row form-group">
 							<label class="col-md-3">Edad</label>
-							<input type="text" th:field="*{edad}" class="form-control col-md-8">
+							<input type="text" th:field="*{edad}" class="form-control col-md-8" th:errorclass="'form-control alert-danger'">
+							<small class="form-text text-danger offset-3" th:if="${#fields.hasErrors('edad')}" th:errors="*{edad}"></small>
 						</div>
 						<div class="row form-group">
 							<label class="col-md-3">Curso</label>
-							<input type="text" th:field="*{curso}" class="form-control col-md-8">
-							
-							<button type="submit" class="btn btn-success col.md-8">Guardar</button>
-							
+							<input type="text" th:field="*{curso}" class="form-control col-md-8" th:errorclass="'form-control alert-danger'">
+							<small class="form-text text-danger offset-3" th:if="${#fields.hasErrors('curso')}" th:errors="*{curso}"></small>
 						</div>
-					</form>
+						<div class="row form-group">
+							<label class="col-md-3">Fecha ingreso</label>
+							<input type="date" th:field="*{fechaIngreso}" class="form-control col-md-8" th:errorclass="'form-control alert-danger'">
+							<small class="form-text text-danger offset-3" th:if="${#fields.hasErrors('fechaIngreso')}" th:errors="*{fechaIngreso}"></small>
+							<button type="submit" class="btn btn-success col.md-8">Guardar</button>
+						</div>
+					</form>	
 				</div>
+				
+			</div>
+			<a th:href="@{/list}"><button class="btn btn-success mt-5">Listado de estudiantes</button></a>
 			</div>
 		</div>
 	</div>
